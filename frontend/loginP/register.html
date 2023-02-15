@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="CSS/register.css">
-<link rel="stylesheet" href="CSS/bootstrap.css">
-</head>
-<form action="action_page.php" method="post" id="myform">
-    <div class="container">
-      <h1>Registrieren</h1>
-      <p>Dieses Formular erstellt einen Benutzeraccount.</p>
-      <hr>
-  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" id="email" class="form-control"required>
-  
-      <label for="psw"><b>Passwort</b></label>
-      <input type="password" placeholder="Passwort" name="passwd1" id="passwd1" class="form-control"required>
-  
-      <label for="psw-repeat"><b>Passwort wiederhohlen</b></label>
-      <input type="password" placeholder="Passwort wiederhohlen" name="passwd2" id="passwd1" class="form-control" required >
-      <hr>
-  
-      <p>Neuen Account erstellen <a href="#">AGB</a>.</p>
-      <button type="submit" class="registerbtn">Registrieren</button>
-    </div>
-  
-    <div class="container signin">
-      <p>Haben Sie schon einen Account? <a href="#">Login</a>.</p>
-    </div>
-  </form> 
-  <!--Script Query und jquery validate-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-  <script>
-//Funtkion Validierung rules, email,passwd1,passed2,plz, bday
-    $(document).ready(function () {
-      $('#myform').validate({
-        rules: {
-          name: {
-            required: true, /* definiert, dass feld ausgefüllt sein muss*/
-            minlength: 3,
-          },
-          email: {
-            remote: {
-              url: "ajax_handler.php",
-              type: "post",
-              data: {
-                email: function () {
-                  return $('#email').val();
-                }
-              }
-            }
-          },
-          passwd1: {
-            required: true,
-            minlength: 5,
-          },
-          passwd2: {
-            equalTo: '#passwd1',
-          },
-        },
-        //Ausgabe Fehler
-          email: {
-            remote: "Email existiert schon.",
-          },
-
-          passwd1: {
-            required: "Passwort stimmt nicht überein...",
-            minlength: "Muss drei Zeichen haben.....",
-          },
-          passwd2: {
-            equalTo: "Passwörter stimmen nicht überrein"
-        },
-      })
-    })
-  </script>
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="CSS/register.css">
+      <link rel="stylesheet" href="CSS/bootstrap.css">
+   </head>
+   <form action="action_page.php" method="post" id="myform">
+      <div class="container">
+         <h1>Registrieren</h1>
+         <p>Dieses Formular erstellt einen Benutzeraccount.</p>
+         <hr>
+         <label for="name">Benutzernamen</label>
+         <input name="name" id="username" type="text" class="form-control" placeholder="Benutzername">
+         <input type="hidden" value="topsecret" id="versteckt" name="versteckt">
+         <label for="email"><b>Email</b></label>
+         <input type="text" placeholder="Enter Email" name="email" id="email" class="form-control"required>
+         <label for="psw"><b>Passwort</b></label>
+         <input type="password" placeholder="Passwort" name="passwd1" id="passwd1" class="form-control"required>
+         <label for="psw-repeat"><b>Passwort wiederhohlen</b></label>
+         <input type="password" placeholder="Passwort wiederhohlen" name="passwd2" id="passwd1" class="form-control" required >
+         <label for="adress">Adresse mit Hausnummer</label>
+         <input name="adress" id="adress" type="text" class="form-control" placeholder="Adresse mit Hausnummer" required>
+         <label for="plz">Postleitzahl</label>
+         <input name="plz" id="plz" type="text" class="form-control" placeholder="PLZ" required>
+         <label for="place">Ortschaft</label>
+         <input name="place" id="place" type="text" class="form-control" placeholder="Ortschaft" required>
+         <hr>
+         <p>Neuen Account erstellen <a href="#">AGB</a>.</p>
+         <input type="checkbox" id="agbs" name="agbs">
+         <label for="newsletter">Ja , ich habe die AGBs studiert und bin einverstanden</label>
+         <button type="submit" class="registerbtn">Registrieren</button>
+      </div>
+      <div class="container signin">
+         <p>Haben Sie schon einen Account?<a href="#">Login</a>.</p>
+      </div>
+   </form>
+   <!--Script Query und jquery validate-->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+   <script>
+      //Funtkion Validierung rules, email,passwd1,passed2,plz, bday
+          $(document).ready(function () {
+            $('#myform').validate({
+              rules: {
+                name: {
+                  required: true, /* definiert, dass feld ausgefüllt sein muss*/
+                  minlength: 3,
+                },
+                email: {
+                  remote: {
+                    url: "ajax_handler.php",
+                    type: "post",
+                    data: {
+                      email: function () {
+                        return $('#email').val();
+                      }
+                    }
+                  }
+                },
+                passwd1: {
+                  required: true,
+                  minlength: 5,
+                },
+                passwd2: {
+                  equalTo: '#passwd1',
+                },
+              },
+              //Ausgabe Fehler
+                email: {
+                  remote: "Email existiert schon.",
+                },
+      
+                passwd1: {
+                  required: "Passwort stimmt nicht überein...",
+                  minlength: "Muss drei Zeichen haben.....",
+                },
+                passwd2: {
+                  equalTo: "Passwörter stimmen nicht überrein"
+              },
+            })
+          })
+        
+   </script>
