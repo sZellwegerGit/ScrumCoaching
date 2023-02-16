@@ -63,3 +63,15 @@ span.psw {
 .container{
  background-color:#f1f1f1
 }
+
+
+
+/* CSS-Code für "Anmelden"-Schaltfläche */
+.login {
+  background-color: #28a745;
+}
+
+/* CSS-Code für "Registrieren"-Schaltfläche */
+.register {
+  background-color: #dc3545;
+}
