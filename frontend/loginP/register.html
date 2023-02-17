@@ -41,45 +41,68 @@
    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
    <script>
-      //Funtkion Validierung rules, email,passwd1,passed2,plz, bday
-          $(document).ready(function () {
-            $('#myform').validate({
-              rules: {
-                name: {
-                  required: true, /* definiert, dass feld ausgefüllt sein muss*/
-                  minlength: 3,
-                },
-                email: {
-                  remote: {
-                    url: "ajax_handler.php",
-                    type: "post",
-                    data: {
-                      email: function () {
-                        return $('#email').val();
-                      }
-                    }
-                  }
-                },
-                passwd1: {
-                  required: true,
-                  minlength: 5,
-                },
-                passwd2: {
-                  equalTo: '#passwd1',
-                },
-              },
-              //Ausgabe Fehler
-                email: {
-                  remote: "Email existiert schon.",
-                },
-      
-                passwd1: {
-                  required: "Passwort stimmt nicht überein...",
-                  minlength: "Muss drei Zeichen haben.....",
-                },
-                passwd2: {
-                  equalTo: "Passwörter stimmen nicht überrein"
-              },
-            })
-          })    
-   </script>
+    //Funtkion Validierung rules, email,passwd1,passed2,plz, bday
+    $(document).ready(function () {
+      $('#myform').validate({
+        rules: {
+          name: {
+            required: true,
+            minlength: 3,
+          },
+          email: {
+            remote: {
+              url: "ajax_handler.php",
+              type: "post",
+              data: {
+                email: function () {
+                  return $('#email').val();
+                }
+              }
+            }
+          },
+          passwd1: {
+            required: true,
+            minlength: 5,
+          },
+          passwd2: {
+            equalTo: '#passwd1',
+          },
+        },
+        messages: {
+          email: {
+            remote: "Email existiert schon.",
+          },
+          passwd1: {
+            required: "Passwort stimmt nicht überein...",
+            minlength: "Muss drei Zeichen haben.....",
+          },
+          passwd2: {
+            equalTo: "Passwörter stimmen nicht überrein"
+          },
+        },
+        submitHandler: function (form) {
+          // serialize the form data
+          var formData = $(form).serialize();
+          
+          // send the form data to the API endpoint
+          $.ajax({
+            type: 'POST',
+            url: 'https://danilo.ch?????????/register',
+            data: formData,
+            success: function (response) {
+              // handle the API response
+              console.log(response);
+              // optionally, redirect the user to a success page
+              window.location.href = 'success.html';
+            },
+            error: function (xhr, status, error) {
+              // handle the API error
+              console.log(xhr.responseText);
+              alert('There was an error submitting the form. Please try again later.');
+            }
+          });
+        }
+      });
+    })    
+  </script>
+  
