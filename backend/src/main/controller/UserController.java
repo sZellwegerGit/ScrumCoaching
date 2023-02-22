@@ -26,6 +26,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         userRepository.save(user);
+        System.out.println("User recived");
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
