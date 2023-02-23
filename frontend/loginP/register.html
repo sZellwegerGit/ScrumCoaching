@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="CSS/register.css">
       <link rel="stylesheet" href="CSS/bootstrap.css">
    </head>
-   <form action="action_page.php" method="post" id="myform">
+   <div id="myform">
       <div class="container">
          <h1>Registrieren</h1>
          <p>Dieses Formular erstellt einen Benutzeraccount.</p>
@@ -31,18 +31,19 @@
          <p>Neuen Account erstellen <a href="#">AGB</a>.</p>
          <input type="checkbox" id="agbs" name="agbs">
          <label for="newsletter">Ja , ich habe die AGBs studiert und bin einverstanden</label>
-         <button type="submit" class="registerbtn">Registrieren</button>
+         <button onclick="submitHandler()" class="registerbtn">Registrieren</button>
       </div>
       <div class="container signin">
          <p>Haben Sie schon einen Account?<a href="#">Login</a>.</p>
       </div>
-   </form>
+    </div>
    <!--Script Query und jquery validate-->
    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
    <script>
     //Funtkion Validierung rules, email,passwd1,passed2,plz, bday
     $(document).ready(function () {
+      console.log("running")
       $('#myform').validate({
         rules: {
           name: {
@@ -80,15 +81,19 @@
             equalTo: "Passwörter stimmen nicht überrein"
           },
         },
-        submitHandler: function (form) {
-          // serialize the form data
-          var formData = $(form).serialize();
+        submitHandler: function () {
+          console.log("testing");
+   
           
           // send the form data to the API endpoint
           $.ajax({
             type: 'POST',
-            url: 'https://danilo.ch?????????/register',
-            data: formData,
+            url: 'http://localhost:8080/api/users',
+            data: 
+            {
+              username: document.getElementById('username')
+              //hier weiter mit daten
+            },
             success: function (response) {
               // handle the API response
               console.log(response);
