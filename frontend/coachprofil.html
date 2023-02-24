@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <title>Coach Profil</title>
+    <style>
+      nav {
+    background-color: #007acc;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        background-color: #0077b6;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .profile-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+
+      .profile {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        width: 50%;
+      }
+
+      .profile h2 {
+        margin-top: 0;
+      }
+
+      .rating-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .rating {
+        width: 30%;
+      }
+
+      .rating h3 {
+        margin-top: 0;
+      }
+
+      .rating ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .rating li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="coaches.html">Scrum Coaches</a></li>
+          <li><a href="#">Leistungen</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Kontakt</a></li>
+      </ul>
+  </nav>
+    <div class="header">
+      <h1>Scrum Coaches</h1>
+      <h2>Coach Profil</h2>
+    </div>
+    <div class="profile-container">
+      <div class="profile">
+        <h2>Name: Mustermann</h2>
+        <h2>Vorname: Max</h2>
+        <h2>Email: max.mustermann@scrumcoaches.com</h2>
+        <div class="rating-container">
+          <div class="rating">
+            <h3>Erreichbarkeit</h3>
+            <ul>
+              <li>Gut</li>
+            </ul>
+          </div>
+          <div class="rating">
+            <h3>Effizienz</h3>
+            <ul>
+              <li>Sehr gut</li>
+            </ul>
+          </div>
+          <div class="rating">
+            <h3>Teamfähigkeit</h3>
+            <ul>
+              <li>Ausgezeichnet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="popup" class="popup">
+  <form>
+    <h3>Bewerten Sie den Coach</h3>
+    <div class="form-group">
+      <label for="erreichbarkeit">Erreichbarkeit:</label>
+      <select id="erreichbarkeit" name="erreichbarkeit">
+        <option value="1">1 - Sehr schlecht</option>
+        <option value="2">2 - Schlecht</option>
+        <option value="3">3 - Akzeptabel</option>
+        <option value="4">4 - Gut</option>
+        <option value="5">5 - Sehr gut</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="effizienz">Effizienz:</label>
+      <select id="effizienz" name="effizienz">
+        <option value="1">1 - Sehr schlecht</option>
+        <option value="2">2 - Schlecht</option>
+        <option value="3">3 - Akzeptabel</option>
+        <option value="4">4 - Gut</option>
+        <option value="5">5 - Sehr gut</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="teamfaehigkeit">Teamfähigkeit:</label>
+      <select id="teamfaehigkeit" name="teamfaehigkeit">
+        <option value="1">1 - Sehr schlecht</option>
+        <option value="2">2 - Schlecht</option>
+        <option value="3">3 - Akzeptabel</option>
+        <option value="4">4 - Gut</option>
+        <option value="5">5 - Sehr gut</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit">Bewertung absenden</button>
+    </div>
+  </form>
+</div>
+
+<script>
+function openPopup() {
+  var popup = document.getElementById("popup");
+  popup.style.display = "block";
+}
+</script>
+
+  </body>
+</html>
