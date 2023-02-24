@@ -94,8 +94,8 @@ nav ul li a {
       <h2>Finde deinen Coach</h2>
       <div class="search-container">
         <form>
-          <input type="text" placeholder="Suche nach Coaches">
-          <input type="submit" value="Suchen" onclick ="">
+          <input type="text" id="search" placeholder="Suche nach Coaches">
+
         </form>
       </div>
     </div>
@@ -106,6 +106,7 @@ nav ul li a {
         <th>Email</th>
         <th>Profil</th>
       </tr>
+      <tbody id="tbody">
       <tr>
         <td>Müller</td>
         <td>Hans</td>
@@ -123,8 +124,38 @@ nav ul li a {
         <td>andreas.lehmann@scrumcoaches.com</td>
       </tr>
     </table>
+  </tbody>
     
 
 
   </body>
+  <script>  
+    const searchInput = document.getElementById('search');
+const table = document.getElementById('tbody');
+const tableRows = table.getElementsByTagName('tr');
+
+searchInput.addEventListener('keyup', function() {
+  const searchValue = this.value.toLowerCase();
+
+  for (let i = 0; i < tableRows.length; i++) {
+    const rowCells = tableRows[i].getElementsByTagName('td');
+    let found = false;
+
+    for (let j = 0; j < rowCells.length; j++) {
+      const cellValue = rowCells[j].innerHTML.toLowerCase();
+
+      if (cellValue.indexOf(searchValue) > -1) {
+        found = true;
+        break;
+      }
+    }
+
+    if (found) {
+      tableRows[i].style.display = '';
+    } else {
+      tableRows[i].style.display = 'none';
+    }
+  }
+});
+  </script>
 </html>
