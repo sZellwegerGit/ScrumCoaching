@@ -41,6 +41,6 @@ create table userRating (
     userId int not null,
     reliability int not null default 3,
     efficiency int not null default 3,
-    teamplayer int not null default 3
+    teamplayer int not null default 3,
+    foreign key (userId) references users(id)
 );
-
