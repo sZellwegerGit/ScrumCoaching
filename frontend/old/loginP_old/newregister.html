@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Login</title>
+  <style>
+    /* CSS für das Formular */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 5px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      margin-top: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anmelden</h1>
+
+    <label for="username">Benutzername:</label>
+    <input type="text" id="username" name="username" placeholder="Gib deinen Benutzernamen ein">
+
+    <label for="password">Passwort:</label>
+    <input type="password" id="password" name="password" placeholder="Gib dein Passwort ein">
+
+    <button onclick="send()" value="Regrisirieren">text</button>
+
+</body>
+<script>
+    console.log("anfang")
+    function send(){
+        console.log("badboy")
+   
+  
+  axios({  method: 'post',  url: 'http://localhost:8080/api/users',  data: { username: document.getElementById('username')}});
+
+    }
+
+</script>
+
+</html>

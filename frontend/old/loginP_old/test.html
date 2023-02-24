@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="en">
+    <title>Coach Profil</title>
+    <style>
+        
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        background-color: #0077b6;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .coach-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px;
+      }
+
+      .coach-info p {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .coach-info .rating {
+        display: flex;
+      }
+
+      .coach-info .rating p {
+        margin-right: 10px;
+      }
+
+      .btn {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px 20px;
+        margin: 50px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn:hover {
+        background-color: #3e8e41;
+      }
+
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        background-color: #fff;
+        padding: 50px;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .popup input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .popup input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Coach Profil</h1>
+    </div>
+
+    <div class="coach-info">
+      <div>
+        <p>Name: <span id="coach-name">Max</span></p>
+        <p>Vorname: <span id="coach-lastname">Mustermann</span></p>
+        <p>Email: <span id="coach-email">max.mustermann@beispiel.com</span></p>
+      </div>
+      <div class="rating">
+        <p>Erreichbarkeit: <span id="coach-reachability">4</span>/5</p>
+        <p>Effizienz: <span id="coach-efficiency">5</span>/5</p>
+        <p>Teamfähigkeit: <span id="coach-teamwork">4</span>/5</p>
+      </div>
+    </div>
+
+    <button class="btn" onclick="openPopup()">
+
+
+<h1>neu</h1>
+
+      <input type="text" id="search" placeholder="Suche...">
+<table id="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Alter</th>
+      <th>Stadt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Max</td>
+      <td>25</td>
+      <td>Berlin</td>
+    </tr>
+    <tr>
+      <td>Lisa</td>
+      <td>30</td>
+      <td>Hamburg</td>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>40</td>
+      <td>München</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<script>
+  const searchInput = document.getElementById('search');
+const table = document.getElementById('table');
+const tableRows = table.getElementsByTagName('tr');
+
+searchInput.addEventListener('keyup', function() {
+  const searchValue = this.value.toLowerCase();
+
+  for (let i = 0; i < tableRows.length; i++) {
+    const rowCells = tableRows[i].getElementsByTagName('td');
+    let found = false;
+
+    for (let j = 0; j < rowCells.length; j++) {
+      const cellValue = rowCells[j].innerHTML.toLowerCase();
+
+      if (cellValue.indexOf(searchValue) > -1) {
+        found = true;
+        break;
+      }
+    }
+
+    if (found) {
+      tableRows[i].style.display = '';
+    } else {
+      tableRows[i].style.display = 'none';
+    }
+  }
+});
+
+</script>
+
+
+
