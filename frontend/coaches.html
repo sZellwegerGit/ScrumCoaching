@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <html lang="en">
+    <title>Home</title>
+    <style>
+
+nav {
+    background-color: #007acc;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+        
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        background-color: #0077b6;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        width: 70%;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="coaches.html">Scrum Coaches</a></li>
+          <li><a href="#">Leistungen</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Kontakt</a></li>
+      </ul>
+  </nav>
+    <div class="header">
+      <h1>Scrum Coaches</h1>
+      <h2>Finde deinen Coach</h2>
+      <div class="search-container">
+        <form>
+          <input type="text" id="search" placeholder="Suche nach Coaches">
+
+        </form>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Vorname</th>
+        <th>Email</th>
+        <th>Profil</th>
+      </tr>
+      <tbody id="tbody">
+      <tr>
+        <td>Müller</td>
+        <td>Hans</td>
+        <td>hans.mueller@scrumcoaches.com</td>
+        <td><a href="coachprofil.html">Profil</a></td>
+      </tr>
+      <tr>
+        <td>Schmidt</td>
+        <td>Carmen</td>
+        <td>carmen.schmidt@scrumcoaches.com</td>
+      </tr>
+      <tr>
+        <td>Lehmann</td>
+        <td>Andreas</td>
+        <td>andreas.lehmann@scrumcoaches.com</td>
+      </tr>
+    </table>
+  </tbody>
+    
+
+
+  </body>
+  <script>  
+    const searchInput = document.getElementById('search');
+const table = document.getElementById('tbody');
+const tableRows = table.getElementsByTagName('tr');
+
+searchInput.addEventListener('keyup', function() {
+  const searchValue = this.value.toLowerCase();
+
+  for (let i = 0; i < tableRows.length; i++) {
+    const rowCells = tableRows[i].getElementsByTagName('td');
+    let found = false;
+
+    for (let j = 0; j < rowCells.length; j++) {
+      const cellValue = rowCells[j].innerHTML.toLowerCase();
+
+      if (cellValue.indexOf(searchValue) > -1) {
+        found = true;
+        break;
+      }
+    }
+
+    if (found) {
+      tableRows[i].style.display = '';
+    } else {
+      tableRows[i].style.display = 'none';
+    }
+  }
+});
+  </script>
+</html>
